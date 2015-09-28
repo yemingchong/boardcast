@@ -19,7 +19,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v100</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -85,11 +85,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="boardcast\Facade.cpp" />
+    <ClCompile Include="any.cpp" />
     <ClCompile Include="boardcast\Observer.cpp" />
     <ClCompile Include="test1.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="all.hpp" />
+    <ClInclude Include="any.h" />
+    <ClInclude Include="Bind.hpp" />
     <ClInclude Include="boardcast\Facade.h" />
     <ClInclude Include="boardcast\IListener.h" />
     <ClInclude Include="boardcast\Observer.h" />

@@ -2,7 +2,6 @@
 #define _MAIL_HEADER_
 
 #include <iostream>
-#include <Facade.h>
 
 /**!
 模块 Mail 负责处理邮件相关的逻辑
@@ -15,7 +14,6 @@ public:
 
 	void send_mail(std::string str)
 	{
-		std::cout << "mail : " << str << std::endl;
 	}
 };
 

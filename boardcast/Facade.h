@@ -4,8 +4,11 @@
 #include "Singleton.h"
 #include <functional>
 #include "IListener.h"
-#include "stream/OStream.hpp"
-#include "stream/IStream.hpp"
+#include "Observer.h"
+#include "../stream/OStream.hpp"
+#include "../stream/IStream.hpp"
+
+#include <tuple>
 
 enum Message
 {
@@ -13,35 +16,40 @@ enum Message
 	MSG_SEND_MAIL,
 };
 
-class PlayerListListener;
-class MailListener;
-
 namespace boardcast
 {
-	class Observer;
-	typedef std::function<void(stream::BlockPtr)> NotifyFunc;
-
 	class Facade : public Singleton<Facade>
 	{
 	public:
 		Facade();
 
-		void regist_notify(int msg, NotifyFunc func);
+		void regist_notify(int msg, type::any func);
 
-		void send(int msg, stream::BlockPtr block);
-
-		//
-		bool check_have_hp(int val);
+		template <typename F , std::size_t ...I , typename T>
+		void send(int msg , const T& t);
 
 	private:
 		Observer * ob;
-
-		PlayerListListener *player_listener_;
-		MailListener *mail_listener_;
 	};
 }
 
-#define SEND_NOTIFY(msg , block)\
-	boardcast::Facade::getRef().send(msg, block);
+void boardcast::Facade::regist_notify(int msg, type::any func)
+{
+	ob->regist_notify(msg, func);
+}
+
+template <typename F, std::size_t ...I, typename T>
+void boardcast::Facade::send(int msg , const T& t)
+{
+	ob->notify<std::function<void(int)>>(msg
+		, typename type::make_int_sequence<sizeof... (I)>{}
+		, t);
+}
+
+boardcast::Facade::Facade()
+{
+	ob = new Observer();
+}
+
 
 #endif

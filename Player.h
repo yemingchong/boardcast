@@ -2,7 +2,7 @@
 #define _PLAYER_HEADER_
 
 #include <iostream>
-#include <Facade.h>
+#include "boardcast/Facade.h"
 
 /**!
 	模块 Player 负责管理玩家的数据 和 行为
@@ -16,11 +16,10 @@ class Player
 public:
 	void add_hp(int val)
 	{
-		std::cout << "player : add hp " << val << std::endl;
-
-		stream::OStream os;
-		os << std::string("add hp");
-		SEND_NOTIFY(MSG_SEND_MAIL, os.getBlock())	// 发个邮件
+		std::cout << "add hp " << val << std::endl;
+		//stream::OStream os;
+		//os << std::string("add hp");
+		//SEND_NOTIFY(MSG_SEND_MAIL, os.getBlock())	// 发个邮件
 	}
 };
 
@@ -57,8 +56,8 @@ public:
 
 	void init()
 	{
-		boardcast::Facade::getRef().regist_notify(MSG_ADD_HP
-			, std::bind(&PlayerListListener::add_hp, this, std::placeholders::_1));
+		std::function<void(int)> f1 = std::bind(&PlayerListListener::add_hp, this, std::placeholders::_1);
+		boardcast::Facade::getRef().regist_notify(MSG_ADD_HP , f1);
 	}
 
 	/**
@@ -70,13 +69,9 @@ public:
 	}
 
 private:
-	void add_hp(stream::BlockPtr block)
+	void add_hp(int val)
 	{
-		int _val;
-		stream::IStream is(block);
-		is >> _val;
-
-		playerlist_->add_hp(_val);
+		playerlist_->add_hp(val);
 	}
 
 private:
