@@ -5,7 +5,6 @@
 
 #include "all.hpp"
 #include "Player.h"
-#include "Mail.h"
 
 #include "any.h"
 
@@ -37,7 +36,6 @@ int main(int argc, char* argv[])
 	new boardcast::Facade();
 
 	new PlayerListListener();
-	new MailListener();
 
 	//boardcast::Facade::getRef().send<0,1,2>(MSG_ADD_HP, std::make_tuple(1, 'a', "hello"));
 

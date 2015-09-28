@@ -2,6 +2,7 @@
 #define _PLAYER_HEADER_
 
 #include <iostream>
+#include <map>
 #include "boardcast/Facade.h"
 
 /**!

@@ -16,19 +16,16 @@
     <Filter Include="boardcast">
       <UniqueIdentifier>{b337f763-3681-4faa-872a-381468a3d39b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="stream">
-      <UniqueIdentifier>{091675a7-cc29-40a2-9b1e-ed3b8e44cde3}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="test1.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="boardcast\Facade.cpp">
-      <Filter>boardcast</Filter>
-    </ClCompile>
     <ClCompile Include="boardcast\Observer.cpp">
       <Filter>boardcast</Filter>
+    </ClCompile>
+    <ClCompile Include="any.cpp">
+      <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -44,32 +41,17 @@
     <ClInclude Include="boardcast\Singleton.h">
       <Filter>boardcast</Filter>
     </ClInclude>
-    <ClInclude Include="stream\Block.hpp">
-      <Filter>stream</Filter>
-    </ClInclude>
-    <ClInclude Include="stream\DefaultStreamTraits.hpp">
-      <Filter>stream</Filter>
-    </ClInclude>
-    <ClInclude Include="stream\Endian.hpp">
-      <Filter>stream</Filter>
-    </ClInclude>
-    <ClInclude Include="stream\IStream.hpp">
-      <Filter>stream</Filter>
-    </ClInclude>
-    <ClInclude Include="stream\OHolder.hpp">
-      <Filter>stream</Filter>
-    </ClInclude>
-    <ClInclude Include="stream\OStream.hpp">
-      <Filter>stream</Filter>
-    </ClInclude>
-    <ClInclude Include="stream\OutOfBound.hpp">
-      <Filter>stream</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>源文件</Filter>
     </ClInclude>
-    <ClInclude Include="Mail.h">
-      <Filter>源文件</Filter>
+    <ClInclude Include="all.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="any.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Bind.hpp">
+      <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -97,15 +97,7 @@
     <ClInclude Include="boardcast\IListener.h" />
     <ClInclude Include="boardcast\Observer.h" />
     <ClInclude Include="boardcast\Singleton.h" />
-    <ClInclude Include="Mail.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="stream\Block.hpp" />
-    <ClInclude Include="stream\DefaultStreamTraits.hpp" />
-    <ClInclude Include="stream\Endian.hpp" />
-    <ClInclude Include="stream\IStream.hpp" />
-    <ClInclude Include="stream\OHolder.hpp" />
-    <ClInclude Include="stream\OStream.hpp" />
-    <ClInclude Include="stream\OutOfBound.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

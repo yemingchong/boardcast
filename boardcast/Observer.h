@@ -4,8 +4,6 @@
 #include <unordered_map>
 #include <functional>
 
-#include "../stream/Block.hpp"
-
 #include "../any.h"
 #include "../Bind.hpp"
 

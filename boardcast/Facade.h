@@ -5,8 +5,6 @@
 #include <functional>
 #include "IListener.h"
 #include "Observer.h"
-#include "../stream/OStream.hpp"
-#include "../stream/IStream.hpp"
 
 #include <tuple>
 
