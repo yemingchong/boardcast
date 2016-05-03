@@ -54,7 +54,7 @@ int main(int argc, char* argv[])
 		//std::function<void(int, char, std::string)> f2 = ;
 	//apply<0, 1, 2>(t1[0].as<std::function<void(int, char, std::string)>>(), std::make_tuple(1, 'a', "hello"));
 
-	// ±¾À´´òËãÓÃtuple µ«ÊÇÃ»°ì·¨·º»¯ĞÍ±ğ ½«À´¿¼ÂÇÓÃÆäËûÊµÏÖ
+	// æœ¬æ¥æ‰“ç®—ç”¨tuple ä½†æ˜¯æ²¡åŠæ³•æ³›åŒ–å‹åˆ« å°†æ¥è€ƒè™‘ç”¨å…¶ä»–å®ç°
 
 
 
@@ -62,7 +62,7 @@ int main(int argc, char* argv[])
 	//{
 	//	stream::OStream os;
 	//	os << _hp << _str;
-	//	SEND_NOTIFY(MSG_ADD_HP, os.getBlock())		// ¼ÓµãÑª
+	//	SEND_NOTIFY(MSG_ADD_HP, os.getBlock())		// åŠ ç‚¹è¡€
 	//}
 
 
@@ -70,3 +70,50 @@ int main(int argc, char* argv[])
 	system("pause");
 	return 0;
 }
+import socket
+import struct
+import sys
+import time
+
+HOST = '127.0.0.1'
+PORT = 9870
+
+BUFSIZE = 1024
+
+addr = (HOST, PORT)
+client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+client.connect(addr)
+
+
+package_len = 125
+message_size = 121
+message_id = 145568146
+
+user_name = "test30"
+proof_type = 0
+version_id = 825110528
+distribution_id = 0
+password = ""
+account_id = 3435973836
+client_crc = 0
+str_mac_len = 17
+str_mac = "9C-5C-8E-7B-9E-F2"
+str_guid_len = 0
+str_guid = ""
+
+
+msg = struct.pack('<III32sIII36sIII17sI'\
+                  , package_len\
+                  , message_size\
+                  , message_id\
+                  , user_name.encode('utf-8')\
+                  , proof_type\
+                  , version_id\
+                  , distribution_id\
+                  , password.encode('utf-8')\
+                  , account_id\
+                  , client_crc\
+                  , str_mac_len\
+                  , str_mac.encode('utf-8')\
+                  , str_guid_len)
+client.send(msg)
